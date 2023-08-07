@@ -63,10 +63,6 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 4. Commit and push your changes to your forked repository.
 5. Create a pull request to the main repository.
 
-## License
-
-This project is open-source and available under the [MIT License](LICENSE).
-
 ## Contact
 
 If you have any questions or suggestions, feel free to contact me at vishnusaibhosekar@gmail.com or open an issue in this repository.
