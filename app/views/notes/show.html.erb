@@ -1,0 +1,19 @@
+<style>
+.danger-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+</style>
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+        <h5 class="card-title"><%= @note.title %></h5>
+        <p class="card-text"><%= @note.content %></p>
+        <%= link_to 'Edit', edit_note_path(@note), class: 'btn btn-primary' %>        
+        <%= link_to 'Back', notes_path, class: 'btn btn-secondary ml-2' %>
+        <%= button_to 'Delete', note_path(@note), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger danger-btn' %>
+        </div>
+    </div>
+</div>

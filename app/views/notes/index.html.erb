@@ -1,0 +1,100 @@
+<style>
+.note-card {
+    width: calc(100% - 10px);
+    height: 250px;
+    margin: 5px;
+    overflow: hidden;
+}
+.note-card .card-body {
+    padding: 0 0;
+}
+.note-title {
+    height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    background-color: #f2f2f2;
+    padding: 10px 10px 10px 10px;
+}
+.note-text {
+    padding: 10px 10px 10px 10px;
+    height: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.new-note-button {
+    position: absolute;
+    top: 8px;
+    left: 200px;
+}
+.view-button {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+.edit-button {
+    position: absolute;
+    bottom: 10px;
+    left: 80px;
+}
+.delete-button {
+    position: absolute;
+    bottom: 10px;
+    left: 145px;
+}
+.landing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+.landing-content {
+    text-align: center;
+}
+</style>
+
+<% if user_signed_in? %>
+    <div class="container mt-4">
+        <div class="row">
+        <div class="col-md-12">
+            <%= link_to 'New Note', new_note_path, class: 'btn btn-success new-note-button' %>
+        </div>
+        </div>
+    </div>
+    
+    <div class="container mt-4">
+        <div class="row">
+        <% @notes.each do |note| %>
+            <div class="col-md-4">
+                <div class="card note-card">
+                    <div class="card-body">
+                        <div class="note-title"><%= note.title %></div>
+                        <div class="note-text"><%= note.content %></div>
+                        <%= link_to 'View', note_path(note), class: 'btn btn-primary view-button' %>
+                        <%= link_to 'Edit', edit_note_path(note), class: 'btn btn-secondary edit-button' %>
+                        <%= button_to 'Delete', note_path(note), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger delete-button' %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        </div>
+    </div>
+<% else %>
+    <div class="landing-container">
+        <div class="landing-content">
+            <h1 class="landing-title">Welcome to the Notes App</h1>
+            <p class="landing-description">A simple and powerful tool to keep your notes organized.</p>
+            <div class="cta-buttons">
+                <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary' %>
+                <%= link_to 'Log In', new_user_session_path, class: 'btn btn-dark' %>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+
+
+
+
